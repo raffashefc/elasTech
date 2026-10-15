@@ -1,6 +1,5 @@
 package petshop;
 
-// Crie um método definirPorte dentro da classe Pet que olha o peso do próprio pet e devolve o porte. Como o método está dentro da classe, ele enxerga os atributos direto. Não precisa receber nada.
 public class Pet {
     String nome;
     String especie;
