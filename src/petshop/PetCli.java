@@ -1,5 +1,5 @@
 package petshop;
-
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PetCli {
@@ -11,12 +11,15 @@ public class PetCli {
 
         while (opcao != 0) {
             exibirMenu();
+            try{
             opcao = scanner.nextInt();
             scanner.nextLine(); 
- 
-            processarOpcao(opcao);
+                processarOpcao(opcao);
+        }catch(InputMismatchException e){
+            System.out.println("\nDigite apenas números!");
+            scanner.nextLine(); 
         }
-
+        }
         scanner.close();
     }
 
@@ -47,6 +50,7 @@ public class PetCli {
                 System.out.println("\nOpção inválida! Tente novamente.");
                 break;
         }
+       
     }
     
 
