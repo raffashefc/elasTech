@@ -3,6 +3,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.HashSet;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+
 public class PetCli {
     PetRepository repository = new PetRepository();
     Scanner scanner = new Scanner(System.in);
@@ -27,6 +29,7 @@ public class PetCli {
 
     private void exibirMenu() {
         System.out.println("\n=== MENU PETSHOP ===");
+        System.out.println("7 - Executar serviços (Banho, Tosa e Consulta)");
         System.out.println("6 - Atender o próximo pet na fila de banho");
         System.out.println("5 - Entrar na fila de banho");
         System.out.println("4 - Listar espécies cadastrados");
@@ -39,6 +42,9 @@ public class PetCli {
 
     private void processarOpcao(int opcao) {
         switch (opcao) {
+            case 7:
+                executarServico();
+                break;
             case 6:
                 atenderProximoPet();
                 break;
@@ -67,6 +73,20 @@ public class PetCli {
        
     }
     
+    private void executarServico() {
+        System.out.print("Nome do pet: ");
+        String nomePet = scanner.nextLine();
+
+        ArrayList<Servico> servicos = new ArrayList<>();
+        servicos.add(new Banho());
+        servicos.add(new Tosa());
+        servicos.add(new Consulta());
+
+        for (Servico servico : servicos) {
+            servico.executar(nomePet);
+        }
+    }
+
 
     private void atenderProximoPet() {
         if (filaDeBanho.isEmpty()) {
