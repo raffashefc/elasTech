@@ -140,6 +140,7 @@ public class PetCli {
     private void listarPets() {
         for (int i = 0; i < repository.getTotalPets(); i++) {
             System.out.println(i + 1 + " - " + repository.pets[i].nome);
+            repository.pets[i].emitirSom();
         }
         if (repository.getTotalPets() == 0) {
             System.out.println("Não há pets cadastrados.");
