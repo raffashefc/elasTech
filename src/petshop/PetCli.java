@@ -2,10 +2,11 @@ package petshop;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.HashSet;
-
+import java.util.ArrayDeque;
 public class PetCli {
     PetRepository repository = new PetRepository();
     Scanner scanner = new Scanner(System.in);
+    ArrayDeque<String> filaDeBanho = new ArrayDeque<>();
 
     public void iniciar() {
         int opcao = -1;
@@ -26,6 +27,8 @@ public class PetCli {
 
     private void exibirMenu() {
         System.out.println("\n=== MENU PETSHOP ===");
+        System.out.println("6 - Atender o próximo pet na fila de banho");
+        System.out.println("5 - Entrar na fila de banho");
         System.out.println("4 - Listar espécies cadastrados");
         System.out.println("3 - Buscar pet");
         System.out.println("2 - Listar pets cadastrados");
@@ -36,16 +39,14 @@ public class PetCli {
 
     private void processarOpcao(int opcao) {
         switch (opcao) {
+            case 6:
+                atenderProximoPet();
+                break;
+            case 5:
+                entrarNaFilaDeBanho();
+                break;
             case 4:
-               HashSet<String> especies = new HashSet<>();
-               for (int i = 0; i < repository.getTotalPets(); i++) {
-                   especies.add(repository.pets[i].especie);
-               }
-               System.out.println("\n--- ESPéCIES CADASTRADAS ---: ");
-               for (String especie : especies) {
-                   System.out.println(especie);
-               }
-               System.out.println("\nTotal de espécies cadastradas: " + especies.size());
+                listarEspecies();
                 break;
             case 3:
                 buscarPet();
@@ -66,6 +67,55 @@ public class PetCli {
        
     }
     
+
+    private void atenderProximoPet() {
+        if (filaDeBanho.isEmpty()) {
+            System.out.println("A fila de banho está vazia!");
+            return;
+        }
+
+        String nomePet = filaDeBanho.poll();
+        System.out.println("Próximo da fila: " + nomePet);
+        System.out.println("Fila de banho: " + filaDeBanho);
+    }
+
+    private void entrarNaFilaDeBanho() {
+       
+
+        System.out.print("Qual pet você deseja entrar na fila de banho?: ");
+        String nome = scanner.nextLine();
+
+        boolean encontrado = false;
+        for (int i = 0; i < repository.getTotalPets(); i++) {
+            if (repository.pets[i].nome.equalsIgnoreCase(nome)) {
+                encontrado = true;
+                break;
+            }
+        }
+        if (encontrado) {
+            filaDeBanho.add(nome);
+            System.out.println(nome + " entrou na fila.");
+            System.out.println("Fila agora: " + filaDeBanho);
+        } else {
+            System.out.println("Pet não encontrado. Não é possível entrar na fila.");
+        }
+    }
+
+    private void listarEspecies() {
+        HashSet<String> especies = new HashSet<>();
+        for (int i = 0; i < repository.getTotalPets(); i++) {
+            especies.add(repository.pets[i].especie);
+        }
+        if (especies.isEmpty()) {
+            System.out.println("Não há espécies cadastradas.");
+        } else {
+            System.out.println("Espécies cadastradas:");
+            for (String especie : especies) {
+                System.out.println("- " + especie);
+            }
+        }
+    }
+
 
     private void listarPets() {
         for (int i = 0; i < repository.getTotalPets(); i++) {
