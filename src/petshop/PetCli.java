@@ -22,6 +22,7 @@ public class PetCli {
 
     private void exibirMenu() {
         System.out.println("\n=== MENU PETSHOP ===");
+        System.out.println("2 - Listar pets cadastrados");
         System.out.println("1 - Cadastrar pet");
         System.out.println("0 - Sair");
         System.out.print("Escolha uma opção: ");
@@ -29,6 +30,9 @@ public class PetCli {
 
     private void processarOpcao(int opcao) {
         switch (opcao) {
+            case 2:
+                listarPets();
+                break;
             case 1:
                 cadastrarPet();
                 break;
@@ -41,6 +45,16 @@ public class PetCli {
         }
     }
     
+
+    private void listarPets() {
+        for (int i = 0; i < repository.getTotalPets(); i++) {
+            System.out.println(i + 1 + " - " + repository.pets[i].nome);
+        }
+        if (repository.getTotalPets() == 0) {
+            System.out.println("Não há pets cadastrados.");
+        }
+    }
+
     private void cadastrarPet() {
        if (repository.isPetArrayFull()) {
             System.out.println("\n[Aviso] O limite máximo de 5 pets foi atingido!");
