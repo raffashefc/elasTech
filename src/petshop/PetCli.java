@@ -177,19 +177,29 @@ public class PetCli {
         System.out.println("Total de pets cadastrados: " + repository.getTotalPets());
     }
 
-    private Pet cadastraPetCli() {
-        Pet pet = new Pet();
-
+   private Pet cadastraPetCli() {
         System.out.print("Digite o nome do pet: ");
-        pet.nome = scanner.nextLine();
+        String nome = scanner.nextLine();
         
         System.out.print("Digite a espécie do pet: ");
-        pet.especie = scanner.nextLine();
+        String especie = scanner.nextLine();
         
         System.out.print("Digite o peso do pet: ");
-        pet.peso = scanner.nextDouble();
-        scanner.nextLine(); 
+        double peso = scanner.nextDouble();
+        scanner.nextLine();
 
+        Pet pet;
+        if (especie.equalsIgnoreCase("cachorro")) {
+            pet = new Cachorro();
+        } else if (especie.equalsIgnoreCase("gato")) {
+            pet = new Gato();
+        } else {
+            pet = new Pet(); 
+        }
+
+        pet.nome = nome;
+        pet.especie = especie;
+        pet.peso = peso;
         pet.porte = pet.definirPorte();
 
         return pet;

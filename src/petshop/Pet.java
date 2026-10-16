@@ -16,6 +16,10 @@ public class Pet {
         }
         return porte;
     }
+
+    public void emitirSom(){
+        System.out.println(nome + " está emitindo som...");
+    }
    
 
     
