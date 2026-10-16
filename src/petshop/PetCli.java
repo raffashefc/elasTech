@@ -1,6 +1,7 @@
 package petshop;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.HashSet;
 
 public class PetCli {
     PetRepository repository = new PetRepository();
@@ -25,6 +26,7 @@ public class PetCli {
 
     private void exibirMenu() {
         System.out.println("\n=== MENU PETSHOP ===");
+        System.out.println("4 - Listar espécies cadastrados");
         System.out.println("3 - Buscar pet");
         System.out.println("2 - Listar pets cadastrados");
         System.out.println("1 - Cadastrar pet");
@@ -34,6 +36,17 @@ public class PetCli {
 
     private void processarOpcao(int opcao) {
         switch (opcao) {
+            case 4:
+               HashSet<String> especies = new HashSet<>();
+               for (int i = 0; i < repository.getTotalPets(); i++) {
+                   especies.add(repository.pets[i].especie);
+               }
+               System.out.println("\n--- ESPéCIES CADASTRADAS ---: ");
+               for (String especie : especies) {
+                   System.out.println(especie);
+               }
+               System.out.println("\nTotal de espécies cadastradas: " + especies.size());
+                break;
             case 3:
                 buscarPet();
                 break;
