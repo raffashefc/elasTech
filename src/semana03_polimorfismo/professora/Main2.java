@@ -1,8 +1,7 @@
-package semana03_polimorfismo;
+package semana03_polimorfismo.professora;
 
-public class Mai2n {
+public class Main2 {
     public static void main(String[] args) {
-        // Criando e configurando a Professora
         Professora flora = new Professora();
         flora.nome = "Flora";
         flora.idade = 30;

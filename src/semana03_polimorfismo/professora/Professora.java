@@ -1,4 +1,4 @@
-package semana03_polimorfismo;
+package semana03_polimorfismo.professora;
 
 public class Professora extends Pessoa {
     String disciplina;

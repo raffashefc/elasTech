@@ -1,4 +1,4 @@
-package semana03_polimorfismo;
+package semana03_polimorfismo.calculadora;
 
 public class Calculadora {
     Double lado;
