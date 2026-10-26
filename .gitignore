@@ -1,0 +1,15 @@
+# --- Java / VS Code ---
+*.class
+bin/
+.vscode/
+.settings/
+.project
+.classpath
+.env
+
+# --- Dependências manuais (opcional, caso não queira subir o jar do lombok) ---
+# lib/
+
+# --- Sistema Operacional ---
+.DS_Store
+Thumbs.db
