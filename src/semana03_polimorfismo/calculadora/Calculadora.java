@@ -15,7 +15,7 @@ public Calculadora() {
     }
 
     double calcularArea(int raio){
-        return 3.14 * raio * raio;
+        return 3.14159 * raio * raio;
     }
 
     double calcularArea(double base, double altura){
