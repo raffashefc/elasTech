@@ -1,4 +1,4 @@
-####Semana 04: Encapsulamento e Modificadores de Acesso
+### Semana 04: Encapsulamento e Modificadores de Acesso
 
 Exercícios de Java sobre encapsulamento: esconder os atributos (`private`) e liberar o acesso de forma controlada por getters, setters e métodos públicos.
 
@@ -47,7 +47,7 @@ class Coisa {
 
 ---
 
-###Questão 1: sentir o `private`
+###Questão 1: perceber o `private`
 
 **Objetivo:** ver o erro do compilador ao acessar atributos privados de fora da classe.
 
