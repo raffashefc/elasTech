@@ -1,4 +1,4 @@
-package semana05_testes;
+package semana06_testes;
 
 public class CalculadoraSimples {
 
